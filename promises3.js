@@ -5,7 +5,7 @@
 // If the array contains anything but strings, it should throw an error.
 // Then call these functions by * chaining * the promises
 //     * /
-const arrayOfWords = ["not","banana",1];
+const arrayOfWords = ["not", "banana"];
 const complicatedArray = ["true", "banana", "true", "dirk"];
 
 //make first letter of string capitalized
@@ -21,19 +21,21 @@ const sortWords = (data) => {
 
 //callback function for promise test
 const callback = (resolve, reject) => {
-    if (arrayOfWords.every(item => typeof item === "string")===false){
-            reject("Incorrect input");
-        } else {
-       const checkedData = arrayOfWords.map(item => capitalizeFirstLetter(item));
-       resolve(checkedData);
-        };
-        
+    if (complicatedArray.every(item => typeof item === "string") === false) {
+        reject("Incorrect input");
+    } else {
+        const checkedData = complicatedArray.map(item => capitalizeFirstLetter(item));
+        resolve(checkedData);
+    };
 }
-    
+
 const test = new Promise(callback);
 
+
 test
-    .then((checkedData)=>console.log(sortWords(checkedData)))
+    .then((checkedData) => {
+        console.log(sortWords(checkedData));
+    })
     .catch((x) => console.log(x));
 
 // checkArrayValues(complicatedArray);
